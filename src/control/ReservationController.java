@@ -33,6 +33,12 @@ public class ReservationController {
         return reservationService.roomAvailablity(reservationDetailsDto);
         
     }
+
+    public String deleteReservation(String resId) throws Exception {
+    
+        return reservationService.deleteReservation(resId);
+    
+    }
     
     
     

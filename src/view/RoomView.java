@@ -69,6 +69,7 @@ public class RoomView extends javax.swing.JFrame {
         CatName = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setForeground(new java.awt.Color(204, 204, 255));
@@ -212,7 +213,7 @@ public class RoomView extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(btSave)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(12, 12, 12))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

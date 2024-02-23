@@ -36,6 +36,7 @@ public class MainView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         btRoomManager.setText("Room Manager");
         btRoomManager.addActionListener(new java.awt.event.ActionListener() {
@@ -152,6 +153,7 @@ public class MainView extends javax.swing.JFrame {
        
         CustomerView customerView = new CustomerView();
         customerView.setVisible(true);
+        customerView.setLocationRelativeTo(null);
              
     }//GEN-LAST:event_btCustomerManagerActionPerformed
 

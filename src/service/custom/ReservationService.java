@@ -19,5 +19,7 @@ String saveReservation(ReservationDto reservationDto) throws Exception;
 double getPrice(long numOfDays, String roomType, String packageType) throws Exception;
 
 boolean roomAvailablity(ReservationDetailsDto reservationDetailsDto) throws Exception;
+
+String deleteReservation(String resId) throws Exception;
     
 }

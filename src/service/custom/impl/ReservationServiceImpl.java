@@ -126,6 +126,24 @@ public class ReservationServiceImpl implements ReservationService {
     
     }
 
+    @Override
+    public String deleteReservation(String resId) throws Exception {
+    
+    
+        if(reservationDao.delete(resId)){
+        
+            return "Sucsess";
+        }
+        
+        else {
+        
+            return "Fail";
+        
+        }
+    
+    
+    }
+
     
     
 }
