@@ -14,5 +14,9 @@ import entity.ReservationDetailsEntity;
 public interface ReservationDetailsDao extends CrudDao < ReservationDetailsEntity , String> {
 
     boolean availability(ReservationDetailsEntity t) throws Exception;
+
+    boolean delete(String resId, String roomId) throws Exception;
+    
+    public ReservationDetailsEntity get(String resId, String roomId) throws Exception; 
     
 }

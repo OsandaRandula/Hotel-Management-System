@@ -34,9 +34,9 @@ public class ReservationController {
         
     }
 
-    public String deleteReservation(String resId) throws Exception {
+    public String deleteReservation(String resId,String roomId) throws Exception {
     
-        return reservationService.deleteReservation(resId);
+        return reservationService.deleteReservation(resId, roomId);
     
     }
     

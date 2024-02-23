@@ -31,15 +31,23 @@ public class ReservationDaoImpl implements ReservationDao {
 
     @Override
     public boolean update(ReservationEntity t) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+         return CrudUtil.executeUpdate("UPDATE reservation set totalPrice= totalPrice - ? WHERE resId=? ",
+                 
+                  t.getTotalPrice(),
+                  t.getResID()      
+                
+         );    
+        
+        
+        
     }
 
     @Override
     public boolean delete(String id) throws Exception {
     
-        return CrudUtil.executeUpdate("DELETE FROM reservation WHERE resId=?",id);
-    
-    
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+ 
     }
 
     @Override

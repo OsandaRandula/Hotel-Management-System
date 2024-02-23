@@ -41,7 +41,9 @@ public class ReservationDetailsDaoImpl implements ReservationDetailsDao {
     @Override
     public boolean delete(String id) throws Exception {
     
-        return CrudUtil.executeUpdate("DELETE FROM reservation_details WHERE resId=?",id);
+       
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody       
+        
     
     }
 
@@ -77,7 +79,43 @@ public class ReservationDetailsDaoImpl implements ReservationDetailsDao {
          
               
     }    
-      
-   
+
+    @Override
+    public boolean delete(String resId, String roomId) throws Exception {
     
+        return CrudUtil.executeUpdate("DELETE FROM reservation_details WHERE resId=? AND roomId=?",resId,roomId);
+    
+    }
+
+    @Override
+    public ReservationDetailsEntity get(String resId, String roomId) throws Exception {
+        
+     ResultSet rst = CrudUtil.executeQuery("SELECT * FROM reservation_details WHERE resId=? AND roomId=?",resId,roomId);
+      while(rst.next()){
+      
+      return new ReservationDetailsEntity(
+                       
+                rst.getString("resId"),
+                rst.getString("roomId"),
+                rst.getTimestamp("inDate"),
+                rst.getTimestamp("outDate"),
+                rst.getString("pakage"),
+                rst.getDouble("Price")
+                            
+      );
+              
+    }
+    
+      return null;
+    
+        
+    
+    }
+    
+    
+    
+
+
 }
+
+   

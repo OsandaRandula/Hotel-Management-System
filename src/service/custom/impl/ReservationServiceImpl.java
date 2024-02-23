@@ -15,6 +15,11 @@ import entity.ReservationDetailsEntity;
 import entity.ReservationEntity;
 import entity.RoomCategoryEntity;
 import java.sql.Connection;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import service.custom.ReservationService;
 
@@ -127,19 +132,67 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public String deleteReservation(String resId) throws Exception {
+    public String deleteReservation(String resId, String roomId) throws Exception {
     
-    
-        if(reservationDao.delete(resId)){
+        Connection connection =  DBConnection.getTnstence().getConnection();  
+        connection.setAutoCommit(false);
         
-            return "Sucsess";
+        ReservationDetailsEntity t = reservationDetailsDao.get(resId, roomId);
+        
+        Double price = t.getPrice();
+        Date inDate = t.getInDate();
+        LocalDate localDateIn = inDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        
+        LocalDateTime inDateTime = localDateIn.atTime(12, 0);
+        LocalDateTime curDateTime = LocalDateTime.now();
+        
+        
+        Duration duration = Duration.between(curDateTime, inDateTime);
+        
+        if(duration.toHours()>=24){
+              
+        if(reservationDetailsDao.delete(resId,roomId)){
+        
+        ReservationEntity a = new ReservationEntity();
+        a.setResID(resId);
+        a.setTotalPrice(price);
+        
+        if(reservationDao.update(a)){
+        
+        connection.commit();
+        return "Succsesfuly Cancel";
+        
+        }
+        
+        
+        else {
+        
+            connection.rollback();
+            return "Eror in Cancel";
+        
+        }
+        
+        
         }
         
         else {
         
-            return "Fail";
+           connection.rollback();
+           return "Eror in Cancel";
+           
+        }
         
         }
+        
+        else {
+        
+        return "You cannot cancel this reservation";
+        
+        
+        }
+        
+        
+        
     
     
     }
