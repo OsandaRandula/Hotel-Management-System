@@ -10,9 +10,11 @@ package view;
  */
 public class MainView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MainView
-     */
+    private static RoomCategoryView roomCategoryView = null;
+    private static RoomView roomView = null;
+    private static CustomerView customerView = null;
+    private static ReservationView reservationView = null;
+    
     public MainView() {
         initComponents();
         
@@ -146,14 +148,42 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btRoomManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRoomManagerActionPerformed
-        new RoomView().setVisible(true);
+        
+
+        
+     if(roomView == null || !roomView.isVisible()){
+        
+        roomView = new RoomView();
+        roomView.setVisible(true);
+        roomView.setLocationRelativeTo(null);
+        
+    } else {
+        
+        roomView.setVisible(true);
+        roomView.setLocationRelativeTo(null); 
+        
+    }
+        
+                       
+        
     }//GEN-LAST:event_btRoomManagerActionPerformed
 
     private void btCustomerManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCustomerManagerActionPerformed
        
-        CustomerView customerView = new CustomerView();
+        
+        if(customerView == null || !customerView.isVisible()){
+        
+        customerView = new CustomerView();
         customerView.setVisible(true);
         customerView.setLocationRelativeTo(null);
+        
+    } else {
+        
+        customerView.setVisible(true);
+        customerView.setLocationRelativeTo(null); 
+        
+    }
+       
              
     }//GEN-LAST:event_btCustomerManagerActionPerformed
 
@@ -163,7 +193,19 @@ public class MainView extends javax.swing.JFrame {
 
     private void btRoomCategoryManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRoomCategoryManagerActionPerformed
        
-        new RoomCategoryView().setVisible(true);
+    if(roomCategoryView == null || !roomCategoryView.isVisible()){
+        
+        roomCategoryView = new RoomCategoryView();
+        roomCategoryView.setVisible(true);
+        roomCategoryView.setLocationRelativeTo(null);
+        
+    } else {
+        
+        roomCategoryView.setVisible(true);
+        roomCategoryView.setLocationRelativeTo(null); 
+        
+    }
+        
     }//GEN-LAST:event_btRoomCategoryManagerActionPerformed
 
     private void btReservationManagerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btReservationManagerMouseClicked
@@ -172,7 +214,19 @@ public class MainView extends javax.swing.JFrame {
 
     private void btReservationManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReservationManagerActionPerformed
         
-        new ReservationView().setVisible(true);
+  
+    if(reservationView == null || !reservationView.isVisible()){
+        
+        reservationView = new ReservationView();
+        reservationView.setVisible(true);
+        reservationView.setLocationRelativeTo(null);
+        
+    } else {
+        
+        reservationView.setVisible(true);
+        reservationView.setLocationRelativeTo(null); 
+        
+    }
         
     }//GEN-LAST:event_btReservationManagerActionPerformed
 

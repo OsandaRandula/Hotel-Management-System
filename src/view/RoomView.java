@@ -159,6 +159,12 @@ public class RoomView extends javax.swing.JFrame {
             }
         });
 
+        CatName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CatNameMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,7 +219,7 @@ public class RoomView extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(btSave)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(15, 15, 15))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,6 +290,10 @@ public class RoomView extends javax.swing.JFrame {
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
         deleteRoom();
     }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void CatNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CatNameMouseClicked
+        searchRoomCategory();
+    }//GEN-LAST:event_CatNameMouseClicked
  
     private void saveRoom(){
     

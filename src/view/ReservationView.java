@@ -55,7 +55,7 @@ public class ReservationView extends javax.swing.JFrame {
         reservationController = new ReservationController();
         searchRoomCategory();
         getRoomsFromSpecificCategory();
-        MouseListener l;
+        //MouseListener l;
         
  
         //inDate.setMinSelectableDate(new Date());
@@ -273,8 +273,8 @@ public class ReservationView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textRoomNo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btCancelReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addComponent(btCancelReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -628,6 +628,11 @@ public class ReservationView extends javax.swing.JFrame {
        };
        
        table.setModel(dtm);
+       
+       table.getColumnModel().getColumn(0).setPreferredWidth(50);
+       table.getColumnModel().getColumn(1).setPreferredWidth(100);
+       table.getColumnModel().getColumn(2).setPreferredWidth(100);
+       table.getColumnModel().getColumn(3).setPreferredWidth(50);
    
    
    }
@@ -640,6 +645,14 @@ public class ReservationView extends javax.swing.JFrame {
             String result = reservationController.reserve(reservationDto);
             JOptionPane.showMessageDialog(this, result);
             reservationDetailsList.clear();
+            cleartext();
+            
+            DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+            
+            int rowCount = dtm.getRowCount();
+                for (int i = rowCount - 1; i >= 0; i--) {
+                    dtm.removeRow(i);
+                }
             
             
         } catch (Exception ex) {
@@ -660,16 +673,30 @@ public class ReservationView extends javax.swing.JFrame {
             
             String result = reservationController.deleteReservation(resId,roomId);
             JOptionPane.showMessageDialog(this, result);
+            clearCancelText();
                      
         } catch (Exception ex) {
             Logger.getLogger(ReservationView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
          
-         
-         
+           
         
      }
+     
+     private void cleartext() {
+    
+        textResID.setText("");
+        textCustId.setText("");
+    
+    }
+
+    private void clearCancelText() {
+    
+        textCancelRes1.setText("");
+        textRoomNo.setText("");
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btCancelReservation;
@@ -729,7 +756,8 @@ public class ReservationView extends javax.swing.JFrame {
     
     
     }
-   
+
+      
 
     
 }
