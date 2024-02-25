@@ -331,7 +331,7 @@ public class RoomCategoryView extends javax.swing.JFrame {
            
                for(RoomCategoryDto d:roomCategoryDtoList){
                
-               Object[] obj = {d.getCatName(),d.getFbPrice(),d.getHbPrice(),d.getBbPrice()};
+               Object[] obj = {d.getCatName(),String.format("%.2f", d.getFbPrice()),String.format("%.2f", d.getHbPrice()),String.format("%.2f", d.getBbPrice())};
                dtm.addRow(obj);
                
                }    
@@ -358,9 +358,9 @@ public class RoomCategoryView extends javax.swing.JFrame {
            
                    
                    textName.setText(roomCategoryDto.getCatName()); 
-                   textFbPrice.setText(String.valueOf(roomCategoryDto.getFbPrice()));
-                   textHbPrice.setText(String.valueOf(roomCategoryDto.getHbPrice()));
-                   textBbPrice.setText(String.valueOf(roomCategoryDto.getBbPrice()));
+                   textFbPrice.setText(String.format("%.2f",roomCategoryDto.getFbPrice()));
+                   textHbPrice.setText(String.format("%.2f",roomCategoryDto.getHbPrice()));
+                   textBbPrice.setText(String.format("%.2f",roomCategoryDto.getBbPrice()));
           
        
        }

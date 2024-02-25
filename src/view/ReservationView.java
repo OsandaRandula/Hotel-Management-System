@@ -569,9 +569,23 @@ public class ReservationView extends javax.swing.JFrame {
    private void addRoom() {
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+        
+        
+        for(int i=0;i<dtm.getRowCount();i++){
+        
+        Object cellValue = dtm.getValueAt(i, 0);
+            if(cellValue.equals(roomSelector.getSelectedItem())){
+        
+                JOptionPane.showMessageDialog(this, "This room is already in your List. Please select another Room");
+                return;
+            }
+        
+        }
+            
         
         try {
-           
+            
             
             ReservationDetailsDto reservationDetailsDto = new ReservationDetailsDto();
             
@@ -593,16 +607,16 @@ public class ReservationView extends javax.swing.JFrame {
             reservationDetailsList.add(reservationDetailsDto);
            
                      
-           Object[] obj = {reservationDetailsDto.getRoomId(),sdf.format(reservationDetailsDto.getInDate()),sdf.format(reservationDetailsDto.getOutDate()),numOfDays,reservationDetailsDto.getPakage(),reservationDetailsDto.getRoomCategory(),price};
+           Object[] obj = {reservationDetailsDto.getRoomId(),sdf.format(reservationDetailsDto.getInDate()),sdf.format(reservationDetailsDto.getOutDate()),numOfDays,reservationDetailsDto.getPakage(),reservationDetailsDto.getRoomCategory(),String.format("%.2f",price)};
            
-           DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+           
            dtm.addRow(obj);
             
             }
             
             else {
             
-             JOptionPane.showMessageDialog(this, "This room is alredy book in selected period");
+             JOptionPane.showMessageDialog(this, "This room is alredy booked in selected period");
             
             }
             
@@ -611,7 +625,7 @@ public class ReservationView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         
-        
+     
    
    }
 

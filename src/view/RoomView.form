@@ -295,7 +295,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Table"/>
+        <Property name="text" type="java.lang.String" value="Bathroom"/>
       </Properties>
     </Component>
     <Component class="java.awt.Checkbox" name="textAttachedBathroom">

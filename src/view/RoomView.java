@@ -146,7 +146,7 @@ public class RoomView extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ddsd.png"))); // NOI18N
 
-        jLabel8.setText("Table");
+        jLabel8.setText("Bathroom");
 
         jLabel9.setText("Category");
 
