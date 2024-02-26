@@ -653,15 +653,32 @@ public class ReservationView extends javax.swing.JFrame {
 
 
     private void reserveRooms() {
-          
+        
+        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+        
+        String resId = textResID.getText();
+        if(resId.isEmpty()){
+        
+            JOptionPane.showMessageDialog(this, "Please enter the Reservation ID");
+            return;
+        }
+        
+        if(dtm.getRowCount()==0){
+        
+            JOptionPane.showMessageDialog(this, "Please add reservation to the table");
+            return;
+            
+        }
+        
         try {
-            ReservationDto reservationDto = new ReservationDto(textResID.getText(), new Date(),Integer.valueOf(textCustId.getText()), reservationDetailsList);
+                              
+            ReservationDto reservationDto = new ReservationDto(textResID.getText(), new Date(),Integer.valueOf(textCustId.getText()), reservationDetailsList);           
+            
             String result = reservationController.reserve(reservationDto);
             JOptionPane.showMessageDialog(this, result);
             reservationDetailsList.clear();
             cleartext();
             
-            DefaultTableModel dtm = (DefaultTableModel) table.getModel();
             
             int rowCount = dtm.getRowCount();
                 for (int i = rowCount - 1; i >= 0; i--) {
